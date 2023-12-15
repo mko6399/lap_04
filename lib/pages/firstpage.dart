@@ -26,27 +26,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          RadioListTile(
-              activeColor: Colors.redAccent,
-              selectedTileColor: Colors.amber,
-              title: Text("งูเหลือมส้ม"),
-              subtitle: Text("50 บาท"),
-              value: "งูเหลือมส้ม",
-              groupValue: groupfood,
-              onChanged: (value) {
-                setState(() {
-                  //ใช้ก็ต่อเมื่อมีการเปลี่ยนแปลงค่าตลอดต้องนำมาใช้
-                  groupfood = value!;
-                });
-                print(groupfood);
-              }),
-
+          radioMenuList("งูเหลือมส้ม", "50 บาท"),
+          radioMenuList("แกงส้ม", "10 บาท"),
+          radioMenuList("กะเพรา", "20 บาท"),
+          radioMenuList("เขียวหวาน", "40 บาท"),
           // RadioListTile(
           //     activeColor: Colors.redAccent,
           //     selectedTileColor: Colors.amber,
-          //     title: Text("คั้วแลน"),
-          //     subtitle: Text("1500 บาท"),
-          //     value: "คั้วแลน",
+          //     title: Text("งูเหลือมส้ม"),
+          //     subtitle: Text("50 บาท"),
+          //     value: "งูเหลือมส้ม",
           //     groupValue: groupfood,
           //     onChanged: (value) {
           //       setState(() {
@@ -55,6 +44,8 @@ class _HomePageState extends State<HomePage> {
           //       });
           //       print(groupfood);
           //     }),
+
+          // radioMenuList(),
           // RadioListTile(
           //     activeColor: Colors.redAccent,
           //     selectedTileColor: Colors.amber,
@@ -154,5 +145,22 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  RadioListTile<String> radioMenuList(String title, String suntitle) {
+    return RadioListTile(
+        activeColor: Colors.redAccent,
+        selectedTileColor: Colors.amber,
+        title: Text(title),
+        subtitle: Text(suntitle),
+        value: title,
+        groupValue: groupfood,
+        onChanged: (value) {
+          setState(() {
+            //ใช้ก็ต่อเมื่อมีการเปลี่ยนแปลงค่าตลอดต้องนำมาใช้
+            groupfood = value!;
+          });
+          print(groupfood);
+        });
   }
 }
